@@ -3,9 +3,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Image from 'next/image';
 import { CreateCharacterButton } from './create-character-button';
 import Link from 'next/link';
+import { Character } from '@prisma/client';
 
 export default async function Person() {
-  const characters = await prisma.character.findMany({
+  const characters: Character[] = await prisma.character.findMany({
     orderBy: { createdAt: 'desc' },
   });
 
