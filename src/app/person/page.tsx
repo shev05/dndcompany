@@ -3,10 +3,19 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Image from 'next/image';
 import { CreateCharacterButton } from './create-character-button';
 import Link from 'next/link';
-import { Character } from '@prisma/client';
+
+type Character = {
+  id: string;
+  name: string;
+  race: string | null;
+  class: string;
+  description: string | null;
+  imageUrl: string | null;
+  createdAt: Date;
+};
 
 export default async function Person() {
-  const characters: Character[] = await prisma.character.findMany({
+  const characters = await prisma.character.findMany({
     orderBy: { createdAt: 'desc' },
   });
 
@@ -17,7 +26,7 @@ export default async function Person() {
         <CreateCharacterButton />
       </div>
       <div className='mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-5'>
-        {characters.map((char) => (
+        {characters.map((char: Character) => (
           <Card key={char.id} className='gap-2 bg-gray-700 hover:cursor-pointer'>
             <Link href={`/person/${char.id}`}>
               <CardHeader>
