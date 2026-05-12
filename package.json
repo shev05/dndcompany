@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "test": "jest",
+    "build": "prisma migrate deploy && prisma generate && next build",
     "postinstall": "prisma generate",
-    "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
