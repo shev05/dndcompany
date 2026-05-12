@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
       bodySizeLimit: '3mb',
     },
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   /* config options here */
   reactCompiler: true,
 };

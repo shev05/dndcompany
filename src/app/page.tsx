@@ -1,3 +1,3 @@
 export default function Home() {
-  return <div className=''>3</div>;
+  return <div className='p-8'>3</div>;
 }
